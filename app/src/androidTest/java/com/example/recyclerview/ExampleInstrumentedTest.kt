@@ -1,4 +1,4 @@
-package com.example.modul5psi
+package com.example.recyclerview
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

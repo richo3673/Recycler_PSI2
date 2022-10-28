@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--<androidx.cardview.widget.CardView -->
+<?xml version="1.0" encoding="utf-8"?><!--<androidx.cardview.widget.CardView -->
 <!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
 <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
 <!--    android:layout_width="match_parent"-->
@@ -10,39 +9,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
     style="?attr/materialCardViewElevatedStyle"
-    app:cardBackgroundColor="@color/purple_100"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:strokeColor="@color/purple_500"
-    android:layout_margin="12dp">
+    android:layout_margin="12dp"
+    app:cardBackgroundColor="@color/purple_100"
+    app:strokeColor="@color/purple_500">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:padding="14dp">
 
-        <TextView
-            android:id="@+id/nama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/foto"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/nim"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_centerVertical="true" />
 
-        <TextView
-            android:id="@+id/nim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:textColor="@android:color/black" />
-
-        <TextView
-            android:id="@+id/kelas"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:textColor="@android:color/black" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/foto">
 
+            <TextView
+                android:id="@+id/nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/foto"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/nim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nama"
+                android:layout_toRightOf="@+id/foto"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/stream"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nim"
+                android:layout_toRightOf="@id/foto"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

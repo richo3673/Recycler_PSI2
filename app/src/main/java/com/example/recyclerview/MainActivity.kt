@@ -1,4 +1,4 @@
-package com.example.modul5psi
+package com.example.recyclerview
 
 import android.os.Bundle
 import android.view.View
@@ -7,10 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.modul5psi.databinding.ActivityMainBinding
-import com.example.modul5psi.helper.MahasiswaAdapter
-import com.example.modul5psi.model.MahasiswaModel
-import com.example.modul5psi.viewmodel.MahasiswaViewModel
+import com.example.recyclerview.databinding.ActivityMainBinding
+import com.example.recyclerview.helper.MahasiswaAdapter
+import com.example.recyclerview.model.MahasiswaModel
+import com.example.recyclerview.viewmodel.MahasiswaViewModel
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -22,39 +22,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.button1.performClick()
-        filterList(null)
-
-        //button binding
-        binding.fab.setOnClickListener(this)
-        binding.button1.setOnClickListener(this)
-        binding.button2.setOnClickListener(this)
-        binding.button3.setOnClickListener(this)
-        binding.button4.setOnClickListener(this)
+        showData()
     }
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
-            R.id.fab -> FormDialogFragment().show(supportFragmentManager, FormDialogFragment.TAG)
-            R.id.button1 -> filterList(null)
-            R.id.button2 -> filterList("TIF")
-            R.id.button3-> filterList("TEKKOM")
-            R.id.button4 -> filterList("SI")
         }
     }
 
-    private fun filterList(s: String?) {
-        //TAMPIL RECYCLER VIEW DENGAN FILTER
+    private fun showData() {
+        //AMBIL DARI VIEWMODEL
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val model = ViewModelProvider(this).get(MahasiswaViewModel::class.java)
         model.getMahasiswaList().observe(this) { mahasiswaListData ->
-            if(s != null) {
-                //filter data based on s
-                data.value = mahasiswaListData.filter { it.kelas.contains(s) }
-            }else {
-                //show all data
                 data.value = mahasiswaListData
-            }
+//            LALU TAMPIL RECYCLER VIEW
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = MahasiswaAdapter(data, this)
         }
